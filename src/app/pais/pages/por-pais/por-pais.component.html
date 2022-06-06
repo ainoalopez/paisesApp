@@ -1,54 +1,55 @@
-
 <h2>Por País</h2>
-<hr>
+<hr />
 
 <!-- buscador -->
 <div class="row">
-    <div class="col">
-        <form   (ngSubmit)="buscar()"
-                autocomplete="off">
-            <input type="text"
-                    name="termino"
-                    class="form-control"
-                    [(ngModel)]="termino"
-                    placeholder="Buscar país..">
-        </form>
-    </div>
+  <div class="col">
+    <form (ngSubmit)="buscar()" autocomplete="off">
+      <input
+        type="text"
+        name="termino"
+        class="form-control"
+        [(ngModel)]="termino"
+        placeholder="Buscar país..."
+      />
+    </form>
+  </div>
 </div>
 
-<hr>
+<hr />
 
 <!-- mensaje de alerta -->
-<div class="alert alert-danger">
-    No se encontró nada con el término ASDF
+<div *ngIf="hayError" class="alert alert-danger">
+  No se encontró nada con el término {{ termino }}
 </div>
 
 <!-- tabla con la información de los países -->
-<div class="row">
-    <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Bandera</th>
-                    <th>Nombre</th>
-                    <th>Población</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>bandera</td>
-                    <td>nombre</td>
-                    <td>1234566789</td>
-                    <td>
-                        <a href="/pais/cri">Ver...</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div *ngIf="!hayError" class="row">
+  <div class="col">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Bandera</th>
+          <th>Nombre</th>
+          <th>Población</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let pais of paises; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <img class="small-flag" [src]="pais.flags.svg" />
+          </td>
+          <td>{{ pais.name.common }}</td>
+          <td>{{ pais.population | number }}</td>
+          <td>
+              <a [routerLink]="['/pais/' + pais.cca2]">Ver...</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
