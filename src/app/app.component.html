@@ -3,32 +3,11 @@
 <div class="row container mt-4">
 
     <div class="col-3">
-        <h2>Busquedas</h2>
-        <hr>
-        <ul class="list-group">
-            <!-- exact: true se mostrará activa la clase active solo si el path conicide con el definido en la ruta -->
-            <li routerLink="" 
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                class="list-group-item">
-                Buscar país
-            </li>
-            <li routerLink="region" 
-                routerLinkActive="active"
-                class="list-group-item">
-                Por region
-            </li>
-            <li routerLink="capital" 
-                routerLinkActive="active"
-                class="list-group-item">
-                Por capital
-            </li>
-        </ul>
+        <app-sidebar></app-sidebar>
     </div>
 
     <div class="col"> 
-        <!-- renderiza el componente en cuestión en este segmento -->
-        <router-outlet></router-outlet>
+        <router-outlet></router-outlet>   <!-- renderiza el componente en cuestión en este segmento -->
     </div>
 
 </div>
