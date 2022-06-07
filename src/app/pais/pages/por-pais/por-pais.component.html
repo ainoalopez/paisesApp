@@ -4,7 +4,10 @@
 <!-- buscador -->
 <div class="row">
   <div class="col">
-    <app-pais-input></app-pais-input>
+    <app-pais-input
+      (onEnter)="buscar( $event )">
+      <!-- escuchamos el término emitido por el componente hijo y cuando se recibe el evento se dispara el buscar -->
+    </app-pais-input>
   </div>
 </div>
 
