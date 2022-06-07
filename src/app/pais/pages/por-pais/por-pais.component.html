@@ -6,7 +6,8 @@
   <div class="col">
     <app-pais-input
       (onEnter)="buscar( $event )"
-      (onDebounce)="sugerencias( $event )">
+      (onDebounce)="sugerencias( $event )"
+      placeholder="Buscar país...">
       <!-- escuchamos el término emitido por el componente hijo y cuando se recibe el evento se dispara el buscar -->
     </app-pais-input>
   </div>

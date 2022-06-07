@@ -14,11 +14,16 @@ export class PaisService {
   constructor( private http: HttpClient ) { }
 
   buscarPais( termino: string ): Observable<Country[]> {
-
     const url = `${ this.apiUrl }/name/${ termino }`;
     return this.http.get<Country[]>( url ); // regresa un observable de tipo Country(interface)
     // .pipe(
     //   catchError( err => of([])) // el of es una función que genera observables y transforma los que haya dentro de los paréntesis en el observable
     //   );
   }
+
+  buscarCapital( termino: string ): Observable<Country[]> {
+    const url = `${ this.apiUrl }/capital/${ termino }`;
+    return this.http.get<Country[]>( url );
+  }
+  
 }
