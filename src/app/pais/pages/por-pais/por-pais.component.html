@@ -4,15 +4,7 @@
 <!-- buscador -->
 <div class="row">
   <div class="col">
-    <form (ngSubmit)="buscar()" autocomplete="off">
-      <input
-        type="text"
-        name="termino"
-        class="form-control"
-        [(ngModel)]="termino"
-        placeholder="Buscar país..."
-      />
-    </form>
+    <app-pais-input></app-pais-input>
   </div>
 </div>
 
@@ -26,30 +18,7 @@
 <!-- tabla con la información de los países -->
 <div *ngIf="!hayError" class="row">
   <div class="col">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Bandera</th>
-          <th>Nombre</th>
-          <th>Población</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let pais of paises; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>
-            <img class="small-flag" [src]="pais.flags.svg" />
-          </td>
-          <td>{{ pais.name.common }}</td>
-          <td>{{ pais.population | number }}</td>
-          <td>
-              <a [routerLink]="['/pais/' + pais.cca2]">Ver...</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- mandamos la información de los paises al componente de la tabla -->
+    <app-pais-tabla [paises]="paises"></app-pais-tabla>
   </div>
 </div>
